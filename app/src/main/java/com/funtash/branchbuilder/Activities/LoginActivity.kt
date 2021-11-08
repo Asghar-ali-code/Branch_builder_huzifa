@@ -27,18 +27,7 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.forgetPassword.setOnClickListener { startActivity(Intent(applicationContext,ForgetPasswordActivity::class.java))
         }
-        binding.seePassword.setOnClickListener(View.OnClickListener {
-            binding.passwordLogin.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            binding.seePassword.visibility = View.INVISIBLE
-            binding.hidePassword.visibility = View.VISIBLE
-        })
 
-        binding.hidePassword.setOnClickListener {
-            binding.passwordLogin.inputType = (InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)
-            binding.seePassword.visibility = View.VISIBLE
-            binding.hidePassword.visibility = View.INVISIBLE
-
-        }
         binding.LoginBtn.setOnClickListener {
             var email:kotlin.String=binding.emailLogin.text.toString()
             var password:kotlin.String=binding.passwordLogin.text.toString()
@@ -67,6 +56,7 @@ class LoginActivity : AppCompatActivity() {
                         token=response.body()!!.token
                        if (token !=null){
                            SavingKeyValuesInShPref(token.toString())
+                           Log.d("hdhdd", "onResponse: "+token)
 
                         startActivity(Intent(this@LoginActivity,HomeScreenActivity::class.java))
                         finish()}else
@@ -92,9 +82,13 @@ class LoginActivity : AppCompatActivity() {
         })
     }
     fun SavingKeyValuesInShPref(ApiToken: kotlin.String){
-        val preference=getSharedPreferences("Details", Context.MODE_PRIVATE)
+        val preference=this.getSharedPreferences("Details", Context.MODE_PRIVATE)
         val editor=preference.edit()
-        editor.putString(ApiToken.toString(),"ApiToken")
+        editor.putString("ApiToken",ApiToken)
         editor.commit()
+        editor.apply()
+        Log.d("mytoke2", "SavingKeyValuesInShPref: "+ApiToken)
+       val myTokenn=preference.getString("ApiToken",null)
+        Log.d("mytoke", "SavingKeyValuesInShPref: "+myTokenn)
     }
 }

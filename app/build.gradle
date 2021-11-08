@@ -52,4 +52,9 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    //spinKitView for waiting animation
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    //recyclerview dependency
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 }

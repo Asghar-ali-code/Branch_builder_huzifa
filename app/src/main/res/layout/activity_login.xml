@@ -74,7 +74,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/email_layout"
-        app:startIconDrawable="@drawable/password">
+        app:startIconDrawable="@drawable/password"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordLogin"
@@ -134,34 +135,6 @@
         app:layout_constraintLeft_toLeftOf="@+id/LoginBtn"
         app:layout_constraintTop_toTopOf="@+id/forgetPassword" />
 
-    <ImageButton
-        android:id="@+id/seePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_6sdp"
-        android:background="@color/tran"
-        android:elevation="@dimen/_30sdp"
-        android:padding="2dp"
-        android:src="@drawable/visible"
-        app:layout_constraintBottom_toBottomOf="@+id/password_layout"
-        app:layout_constraintEnd_toEndOf="@+id/password_layout"
-        app:layout_constraintTop_toTopOf="@+id/password_layout"
-        app:tint="@color/grey" />
 
-    <ImageButton
-        android:id="@+id/hidePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_6sdp"
-        android:background="@color/tran"
-        android:elevation="@dimen/_30sdp"
-        android:padding="2dp"
-        android:src="@drawable/invisible"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/password_layout"
-        app:layout_constraintRight_toRightOf="@+id/password_layout"
-        app:layout_constraintTop_toTopOf="@+id/password_layout"
-        app:layout_constraintVertical_bias="0.473"
-        app:tint="@color/grey" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
