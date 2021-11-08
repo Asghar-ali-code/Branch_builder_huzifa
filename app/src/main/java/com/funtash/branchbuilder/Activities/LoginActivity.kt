@@ -8,6 +8,8 @@ import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.funtash.branchbuilder.Model.ApiToken
 import com.funtash.branchbuilder.Response.ResponseApis
 import com.funtash.branchbuilder.databinding.ActivityLoginBinding
@@ -29,6 +31,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.LoginBtn.setOnClickListener {
+            binding.spinKitLogin.visibility=View.VISIBLE
+            binding.LoginBtn.visibility=View.INVISIBLE
+
             var email:kotlin.String=binding.emailLogin.text.toString()
             var password:kotlin.String=binding.passwordLogin.text.toString()
             Log.d("jdjdd", "onCreate: "+email+password)
@@ -64,6 +69,8 @@ class LoginActivity : AppCompatActivity() {
 
 
                     } else {
+                        binding.spinKitLogin.visibility=View.INVISIBLE
+                        binding.LoginBtn.visibility=View.VISIBLE
                         Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_SHORT).show()
 
                     }
@@ -76,6 +83,8 @@ class LoginActivity : AppCompatActivity() {
                 Log.d("jdjdd", "Infailuer ")
                 Toast.makeText(applicationContext, "Something Want Wrong", Toast.LENGTH_SHORT)
                     .show()
+                binding.spinKitLogin.visibility=View.INVISIBLE
+                binding.LoginBtn.visibility=View.VISIBLE
 
 
             }

@@ -100,6 +100,7 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:background="@drawable/gradinetbtn"
         android:elevation="@dimen/_12sdp"
+        android:padding="@dimen/_12sdp"
         android:fontFamily="@font/lato"
         android:text="Log In"
         android:textAllCaps="false"
@@ -131,10 +132,23 @@
         android:textColor="@color/grey"
         android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="@+id/forgetPassword"
         app:layout_constraintLeft_toLeftOf="@+id/LoginBtn"
         app:layout_constraintTop_toTopOf="@+id/forgetPassword" />
 
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spinKitLogin"
+        style="@style/SpinKitView.Circle"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        app:SpinKit_Color="@color/btnBgColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

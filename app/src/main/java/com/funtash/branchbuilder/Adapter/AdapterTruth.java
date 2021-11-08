@@ -35,6 +35,10 @@ public class AdapterTruth extends RecyclerView.Adapter<AdapterTruth.TruthLay> {
     public void onBindViewHolder(@NonNull TruthLay holder, int position) {
         Branches.Truth truthObj = branches.truths.get(position);
         holder.title.setText(truthObj.title);
+        holder.title.setOnClickListener(view -> {
+
+
+        });
 
 
     }

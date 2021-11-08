@@ -133,20 +133,19 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
         <TextView
             android:id="@+id/loginTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/lato"
             android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:text="Login"
             android:textColor="@color/grey"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@+id/retypePassword_layout"
-            app:layout_constraintTop_toBottomOf="@+id/retypePassword_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
 
 
         <Button
@@ -154,20 +153,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="@dimen/_15sdp"
             android:background="@drawable/gradinetbtn"
             android:elevation="10dp"
             android:fontFamily="@font/lato"
+            android:padding="@dimen/_12sdp"
             android:paddingStart="102dp"
             android:paddingEnd="102dp"
             android:text="Sign Up"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginTxt" />
+            app:layout_constraintTop_toBottomOf="@+id/retypePassword_layout" />
 
         <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/spin_kit"

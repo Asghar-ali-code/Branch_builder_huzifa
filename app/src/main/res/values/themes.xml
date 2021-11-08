@@ -22,4 +22,9 @@
     <style name="Theme.BranchBuilder.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.BranchBuilder.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AlertDialogCustom" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:textColor" >@color/btnBgColor</item>
+        <item name="android:buttonTint">@color/btnBgColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

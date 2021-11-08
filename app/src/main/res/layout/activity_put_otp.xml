@@ -44,13 +44,14 @@
 
     <Button
         android:id="@+id/btnSubmitOtp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradinetbtn"
-        android:fontFamily="@font/lato_bold"
+        android:fontFamily="@font/lato"
+        android:padding="@dimen/_12sdp"
         android:layout_marginTop="24dp"
-        android:paddingStart="98dp"
-        android:paddingEnd="98dp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
         android:text="Submit"
         android:textAllCaps="false"
         android:textColor="@color/white"
