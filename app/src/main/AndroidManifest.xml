@@ -12,8 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity
-            android:name=".Activities.TruthDeatilsActivity"
+            android:name=".Activities.MenuActivity"
             android:exported="true" />
+        <activity
+            android:name=".Activities.TruthDeatilsActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Activities.HomeScreenActivity"
             android:exported="true" />

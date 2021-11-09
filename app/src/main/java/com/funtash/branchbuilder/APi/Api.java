@@ -2,7 +2,10 @@ package com.funtash.branchbuilder.APi;
 
 import com.funtash.branchbuilder.Model.ApiToken;
 import com.funtash.branchbuilder.Model.Branches;
+import com.funtash.branchbuilder.Model.CreateTruth;
+import com.funtash.branchbuilder.Model.DefaultNotification;
 import com.funtash.branchbuilder.Model.Register;
+import com.funtash.branchbuilder.Model.UpdateNotifications;
 import com.funtash.branchbuilder.Response.ResponseApis;
 
 import retrofit2.Call;
@@ -33,6 +36,30 @@ public interface Api {
             @Header("Authorization") String Authorization
 
    // @Query("Authorization")
+    );
+    @FormUrlEncoded
+    @POST("create_truth/")
+    Call<CreateTruth> createTruth(
+            @Field("category") String category,
+            @Field("title") String title,
+            @Field("body") String body,
+            @Header("Authorization") String Authorization
+
+    );
+    @GET("noti/")
+    Call<DefaultNotification> defaultNoti(
+            @Header("Authorization") String Authorization
+
+    );
+    @FormUrlEncoded
+    @POST("update_noti/")
+    Call<UpdateNotifications> updateNoti(
+            @Field("id") String id,
+            @Field("on") Boolean on,
+            @Field("starthour") String starthour,
+            @Field("endhour") String endhour,
+            @Field("delay") String delay
+
     );
 
 }

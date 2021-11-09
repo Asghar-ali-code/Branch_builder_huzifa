@@ -23,7 +23,9 @@ import android.widget.Toast;
 import com.funtash.branchbuilder.Adapter.AdapterTruth;
 import com.funtash.branchbuilder.BuildConfig;
 import com.funtash.branchbuilder.Model.ApiToken;
+import com.funtash.branchbuilder.Model.AppValues;
 import com.funtash.branchbuilder.Model.Branches;
+import com.funtash.branchbuilder.Model.DefaultNotification;
 import com.funtash.branchbuilder.R;
 import com.funtash.branchbuilder.Response.ResponseApis;
 import com.funtash.branchbuilder.databinding.ActivityHomeScreenBinding;
@@ -50,7 +52,6 @@ public class HomeScreenActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        binding.truthsRec.setLayoutManager(new LinearLayoutManager(this));
         clickListnerns(this);
 
         //setting drawer icon
@@ -117,6 +118,10 @@ public class HomeScreenActivity extends AppCompatActivity {
             builder.show();
 
         });
+        binding.menu.setOnClickListener(view -> {
+            startActivity(new Intent(this,MenuActivity.class));
+        });
+        binding.truthsRec.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -126,10 +131,15 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Branches> call, Response<Branches> response) {
                 if (response.isSuccessful() && !response.body().equals(null)){
+                    if (checkNotificationId()){
+                        defaultNotifictions(Authorization);
+                    }
                     Log.d("dhdhdh", "onResponse: "+response.body().truths);
                     binding.truthsRec.setAdapter(new AdapterTruth(response.body(),HomeScreenActivity.this));
                     List<String> list=new ArrayList<String>();
+
                     list=response.body().categories;
+                    AppValues.setArrayList((ArrayList<String>) list);
                     int i;
                     for (i=0; i<=list.size();i++){
                         try {
@@ -148,6 +158,50 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public  void  defaultNotifictions (String Authorization){
+        Call<DefaultNotification> call=ResponseApis.getInstance().getApiAllPorts().defaultNoti(Authorization);
+        call.enqueue(new Callback<DefaultNotification>() {
+            @Override
+            public void onResponse(Call<DefaultNotification> call, Response<DefaultNotification> response) {
+                if (response.isSuccessful() && !response.body().equals(null)){
+                    savingNotificationId(response.body().noti.id);
+                    Log.d("gettingdd", "onResponse: "+response.body().noti.id);
+
+                }else {
+                    Toast.makeText(HomeScreenActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DefaultNotification> call, Throwable t) {
+                Toast.makeText(HomeScreenActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+    private boolean checkNotificationId(){
+        int id=-1;
+        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("NotifactionPrf",MODE_PRIVATE);
+      id=sharedPreferences.getInt("NotificationId",-1);
+      if (id ==-1){
+          Log.d("gettingddChk", "onResponse: "+String.valueOf(id));
+          return  true;
+
+      }
+        Log.d("gettingddSavChk", "onResponse: "+String.valueOf(id));
+        return  false;
+
+
+    }
+    private  void  savingNotificationId(int id){
+        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("NotifactionPrf",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putInt("NotificationId",id);
+        editor.commit();
+        editor.apply();
+        Log.d("gettingddSav", "onResponse: "+String.valueOf(id));
     }
 
 }

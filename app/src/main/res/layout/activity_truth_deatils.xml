@@ -4,6 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Activities.TruthDeatilsActivity">
+
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:elevation="@dimen/_6sdp"
+        android:padding="0dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:smsp_floatingLabelColor="#1976D2"
+        app:smsp_floatingLabelText="Floating Label Text"
+        app:smsp_hint="Hint Text"
+        app:smsp_hintColor="#388E3C"
+        app:smsp_isOutlined="true"
+        app:smsp_itemColor="#512DA8"
+        app:smsp_itemListColor="#7C4DFF"
+        app:smsp_itemListHintBackgroundColor="#808080"
+        app:smsp_itemListHintColor="#FFFFFF"
+        app:smsp_multilineError="false"
+        app:smsp_outlinedBoxColor="@color/black"
+        app:smsp_selectedItemListColor="#FF5252" />
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="@drawable/textfield_bg"
+        android:elevation="@dimen/_6sdp"
+        android:fontFamily="@font/lato"
+        android:hint="Title"
+        android:isScrollContainer="true"
+        android:minHeight="@dimen/_54sdp"
+        android:padding="@dimen/_8sdp"
+        android:scrollIndicators="bottom"
+        android:singleLine="true"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="@drawable/textfield_bg"
+        android:elevation="@dimen/_6sdp"
+        android:fontFamily="@font/lato"
+        android:gravity="start"
+        android:hint="Title"
+        android:scrollIndicators="left"
+        android:singleLine="false"
+        android:inputType="textMultiLine"
+        android:minHeight="@dimen/_60sdp"
+        android:maxHeight="@dimen/_300sdp"
+        android:padding="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:fontFamily="@font/lato"
+        android:text="count"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/body"
+        app:layout_constraintTop_toBottomOf="@+id/body" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSendCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:background="@drawable/gradinetbtn"
+        android:fontFamily="@font/lato"
+        android:padding="@dimen/_12sdp"
+        android:text="Send code"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

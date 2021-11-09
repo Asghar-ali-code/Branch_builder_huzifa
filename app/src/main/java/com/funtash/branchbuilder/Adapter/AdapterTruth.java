@@ -1,6 +1,7 @@
 package com.funtash.branchbuilder.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.funtash.branchbuilder.Activities.TruthDeatilsActivity;
 import com.funtash.branchbuilder.Model.Branches;
 import com.funtash.branchbuilder.R;
 
@@ -36,6 +38,11 @@ public class AdapterTruth extends RecyclerView.Adapter<AdapterTruth.TruthLay> {
         Branches.Truth truthObj = branches.truths.get(position);
         holder.title.setText(truthObj.title);
         holder.title.setOnClickListener(view -> {
+            Intent intent=new Intent(context, TruthDeatilsActivity.class);
+            intent.putExtra("scenario",1);
+            intent.putExtra("truth",truthObj.category);
+            context.startActivity(intent);
+
 
 
         });
