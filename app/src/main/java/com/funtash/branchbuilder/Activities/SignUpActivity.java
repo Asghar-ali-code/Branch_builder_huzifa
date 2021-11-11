@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.funtash.branchbuilder.Model.ApiToken;
 import com.funtash.branchbuilder.Model.Register;
+import com.funtash.branchbuilder.R;
 import com.funtash.branchbuilder.Response.ResponseApis;
 import com.funtash.branchbuilder.databinding.ActivitySignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -26,6 +27,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.loginTxt.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), LoginActivity.class)));

@@ -4,6 +4,7 @@ import com.funtash.branchbuilder.Model.ApiToken;
 import com.funtash.branchbuilder.Model.Branches;
 import com.funtash.branchbuilder.Model.CreateTruth;
 import com.funtash.branchbuilder.Model.DefaultNotification;
+import com.funtash.branchbuilder.Model.DeleteTruth;
 import com.funtash.branchbuilder.Model.Register;
 import com.funtash.branchbuilder.Model.UpdateNotifications;
 import com.funtash.branchbuilder.Response.ResponseApis;
@@ -54,12 +55,19 @@ public interface Api {
     @FormUrlEncoded
     @POST("update_noti/")
     Call<UpdateNotifications> updateNoti(
+            @Header("Authorization") String Authorization,
             @Field("id") String id,
             @Field("on") Boolean on,
             @Field("starthour") String starthour,
             @Field("endhour") String endhour,
             @Field("delay") String delay
 
+    );
+    @FormUrlEncoded
+    @POST("delete_truth/")
+    Call<DeleteTruth> deleteTruth(
+            @Header("Authorization") String Authorization,
+            @Field("id") String id
     );
 
 }

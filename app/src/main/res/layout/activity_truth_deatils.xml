@@ -7,6 +7,30 @@
     android:background="@drawable/background"
     tools:context=".Activities.TruthDeatilsActivity">
 
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_back"
+        android:layout_marginStart="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/textTop"
+       app:layout_constraintTop_toTopOf="@+id/textTop"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Truth"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:fontFamily="@font/lato"
+        android:textSize="@dimen/_16sdp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
@@ -19,19 +43,19 @@
         android:spinnerMode="dropdown"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTop"
         app:smsp_floatingLabelColor="#1976D2"
         app:smsp_floatingLabelText="Floating Label Text"
-        app:smsp_hint="Hint Text"
-        app:smsp_hintColor="#388E3C"
+        app:smsp_hint="Select Category"
+        app:smsp_hintColor="#1976D2"
         app:smsp_isOutlined="true"
-        app:smsp_itemColor="#512DA8"
-        app:smsp_itemListColor="#7C4DFF"
+        app:smsp_itemColor="@color/black"
+        app:smsp_itemListColor="@color/black"
         app:smsp_itemListHintBackgroundColor="#808080"
         app:smsp_itemListHintColor="#FFFFFF"
         app:smsp_multilineError="false"
         app:smsp_outlinedBoxColor="@color/black"
-        app:smsp_selectedItemListColor="#FF5252" />
+        app:smsp_selectedItemListColor="@color/btnBgColor" />
 
     <EditText
         android:id="@+id/title"
@@ -64,11 +88,11 @@
         android:elevation="@dimen/_6sdp"
         android:fontFamily="@font/lato"
         android:gravity="start"
-        android:hint="Title"
+        android:hint="Body"
         android:scrollIndicators="left"
         android:singleLine="false"
         android:inputType="textMultiLine"
-        android:minHeight="@dimen/_60sdp"
+        android:minHeight="@dimen/_120sdp"
         android:maxHeight="@dimen/_300sdp"
         android:padding="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,27 +103,42 @@
         android:id="@+id/count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_4sdp"
         android:fontFamily="@font/lato"
         android:text="count"
+        android:visibility="invisible"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/body"
+        app:layout_constraintEnd_toEndOf="@+id/body"
         app:layout_constraintTop_toBottomOf="@+id/body" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSendCode"
+        android:id="@+id/editTruthBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_8sdp"
         android:background="@drawable/gradinetbtn"
         android:fontFamily="@font/lato"
         android:padding="@dimen/_12sdp"
-        android:text="Send code"
+        android:text="Edit Truth"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:elevation="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:visibility="invisible"
+        app:SpinKit_Color="@color/btnBgColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent" />
 
 

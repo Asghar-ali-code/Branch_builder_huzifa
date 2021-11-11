@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.funtash.branchbuilder.Model.ApiToken
+import com.funtash.branchbuilder.R
 import com.funtash.branchbuilder.Response.ResponseApis
 import com.funtash.branchbuilder.databinding.ActivityLoginBinding
 import retrofit2.Call
@@ -23,6 +24,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.statusBarColor = resources.getColor(R.color.white)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         binding= ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.signupTxt.setOnClickListener { startActivity(Intent(applicationContext,SignUpActivity::class.java))

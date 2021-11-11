@@ -25,15 +25,47 @@
 
         </androidx.appcompat.widget.Toolbar>
 
+        <TextView
+            android:id="@+id/TruthTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:fontFamily="@font/lato"
+            android:text="Truths"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:elevation="@dimen/_10sdp"
+            android:visibility="visible"
+            app:SpinKit_Color="@color/btnBgColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/truthsRec" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/truthsRec"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/TruthTv" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_16sdp"
@@ -62,7 +94,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
-                android:background="@color/light_blue">
+                android:background="@color/btnBgColor">
 
                 <ImageView
                     android:layout_width="@dimen/_100sdp"
@@ -71,13 +103,33 @@
                     android:src="@drawable/logo_white" />
 
             </RelativeLayout>
-            <TextView
-                android:id="@+id/profle"
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchNotification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_6sdp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/textfield_bg"
+                android:drawableStart="@drawable/notification_bell"
+                android:elevation="@dimen/_8sdp"
+                android:drawableTint="@color/light_blue"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/_12sdp"
+                android:text="Notfication"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/truth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
                 android:drawableStart="@drawable/truth"
                 android:drawablePadding="4dp"
-                android:layout_marginTop="@dimen/_6sdp"
                 android:drawableTint="@color/light_blue"
                 android:fontFamily="@font/lato"
                 android:gravity="center_vertical"
@@ -97,11 +149,38 @@
                 android:fontFamily="@font/lato"
                 android:gravity="center_vertical"
                 android:padding="@dimen/_10sdp"
-                android:textColor="@color/black"
                 android:text="menu"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
 
+            <TextView
+                android:id="@+id/share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/share"
+                android:drawablePadding="6dp"
+                android:drawableTint="@color/light_blue"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10sdp"
+                android:text="Share"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/rateUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/rate"
+                android:drawablePadding="6dp"
+                android:drawableTint="@color/light_blue"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10sdp"
+                android:text="Rate Us"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/logOut"
@@ -114,32 +193,6 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/_10sdp"
                 android:text="Log Out"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-            <TextView
-                android:id="@+id/share"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/share"
-                android:drawablePadding="6dp"
-                android:drawableTint="@color/light_blue"
-                android:fontFamily="@font/lato"
-                android:gravity="center_vertical"
-                android:text="Share"
-                android:padding="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-            <TextView
-                android:id="@+id/rateUs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/rate"
-                android:drawablePadding="6dp"
-                android:drawableTint="@color/light_blue"
-                android:fontFamily="@font/lato"
-                android:gravity="center_vertical"
-                android:padding="@dimen/_10sdp"
-                android:text="Rate Us"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
