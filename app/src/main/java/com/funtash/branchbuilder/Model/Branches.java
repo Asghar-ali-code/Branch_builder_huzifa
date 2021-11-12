@@ -12,8 +12,11 @@ public class Branches {
     @SerializedName("categories")
     @Expose
     public List<String> categories = null;
-    
-    public class Truth {
+
+    public Branches() {
+    }
+
+    public static class Truth {
 
         @SerializedName("id")
         @Expose

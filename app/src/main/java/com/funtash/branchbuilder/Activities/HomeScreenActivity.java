@@ -3,11 +3,13 @@ package com.funtash.branchbuilder.Activities;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.Dialog;
 import android.app.Notification;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,6 +25,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 import com.funtash.branchbuilder.Adapter.AdapterTruth;
 import com.funtash.branchbuilder.BuildConfig;
 import com.funtash.branchbuilder.Model.ApiToken;
@@ -46,23 +49,19 @@ public class HomeScreenActivity extends AppCompatActivity {
     ActionBarDrawerToggle toggle;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
+    SmartMaterialSpinner smartMaterialSpinner;
+    AppCompatButton button;
+    Dialog dialog;
+    Branches branches;
+    List<String> list=new ArrayList<String>();
     String token=null;
     String apiToken;
+    AdapterTruth adapter;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.TimePicker)
-                .setTitle("Exit")
-                .setMessage("Are you sure you wan to close this app")
-                .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finishAffinity();
-                    }
-                })
-                .setNegativeButton("NO", null);
-        builder.show();
+       finish();
 
     }
 
@@ -73,10 +72,27 @@ public class HomeScreenActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         binding=ActivityHomeScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        dialog=new Dialog(this);
+        branches=new Branches();
+        dialog.setContentView(R.layout.filterdialog);
+        smartMaterialSpinner=dialog.findViewById(R.id.spinnerfilter);
+        button=dialog.findViewById(R.id.filterbtn);
         drawerLayout = findViewById(R.id.drawer);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         clickListnerns(this);
+        binding.filterlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+            }
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filter(apiToken,smartMaterialSpinner.getSelectedItem().toString());
+            }
+        });
 
         //setting drawer icon
         toolbar.post(() -> {
@@ -94,6 +110,7 @@ public class HomeScreenActivity extends AppCompatActivity {
              apiToken="Token "+token;
             Log.d("dhdhdh", "onCreate: "+token);
             gettingTruths(apiToken);
+
         }
         binding.floatingButton.setOnClickListener(view -> {
             Intent intent=new Intent(HomeScreenActivity.this,TruthDeatilsActivity.class);
@@ -102,6 +119,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
         binding.truth.setOnClickListener(view -> {
             startActivity(new Intent(this,HomeScreenActivity.class));
+            finish();
         });
         if (preference.getBoolean("notification",true))
         binding.switchNotification.setChecked(true);
@@ -205,11 +223,16 @@ public class HomeScreenActivity extends AppCompatActivity {
                     if (checkNotificationId()){
                         defaultNotifictions(Authorization);
                     }
-                    Log.d("dhdhdh", "onResponse: "+response.body().truths);
-                    binding.truthsRec.setAdapter(new AdapterTruth(response.body(),HomeScreenActivity.this,Authorization));
-                    List<String> list=new ArrayList<String>();
+                    Log.d("dhdhdh", "onResponse: "+response.body().truths);;
+                    binding.truthsRec.setAdapter(new AdapterTruth( response.body().truths,HomeScreenActivity.this,Authorization));
 
                     list=response.body().categories;
+                    if(!list.isEmpty())
+                    {
+                        smartMaterialSpinner.setItem(list);
+                        smartMaterialSpinner.setAutoSelectable(true);
+                    }
+
                     AppValues.setArrayList((ArrayList<String>) list);
                     int i;
                     for (i=0; i<=list.size();i++){
@@ -305,6 +328,48 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void  filter (String Authoriztion,String text)
+    {
+        AdapterTruth adapter= new AdapterTruth(branches.truths,this,Authoriztion);
+        binding.truthsRec.setAdapter(adapter);
+        Call<Branches> call= ResponseApis.getInstance()
+                .getApiAllPorts()
+                .gettingBranches(Authoriztion);
+        call.enqueue(new Callback<Branches>() {
+            @Override
+            public void onResponse(Call<Branches> call, Response<Branches> response) {
+                try {
+
+                    if (response.isSuccessful() && response.body() != null) {
+                        dialog.dismiss();
+
+                        if (branches.truths != null) {
+                            branches.truths.clear();
+                        }
+                        List<Branches.Truth> branches1=new ArrayList<Branches.Truth>();
+                        branches = response.body();
+                        for (int i = 0; i < branches.truths.size(); i++) {
+                            if (branches.truths.get(i).category.equals(text)) {
+                                branches1.add(branches.truths.get(i));
+                            }
+
+                        }
+                        adapter.filterlist(branches1);
+                    }
+                }
+                catch (IndexOutOfBoundsException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Branches> call, Throwable t) {
+
+            }
+        });
+
     }
 
 }

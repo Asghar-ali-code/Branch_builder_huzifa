@@ -59,6 +59,9 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
     //spinner dependency
     implementation 'com.github.chivorns:smartmaterialspinner:1.5.0'
+    //see more text dependency
+    implementation "it.mike5v:viewmore-textview:1.1.3"
+
 
 
 }

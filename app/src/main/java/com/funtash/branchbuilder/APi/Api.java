@@ -7,6 +7,7 @@ import com.funtash.branchbuilder.Model.DefaultNotification;
 import com.funtash.branchbuilder.Model.DeleteTruth;
 import com.funtash.branchbuilder.Model.Register;
 import com.funtash.branchbuilder.Model.UpdateNotifications;
+import com.funtash.branchbuilder.Model.UpdateTruth;
 import com.funtash.branchbuilder.Response.ResponseApis;
 
 import retrofit2.Call;
@@ -68,6 +69,15 @@ public interface Api {
     Call<DeleteTruth> deleteTruth(
             @Header("Authorization") String Authorization,
             @Field("id") String id
+    );
+    @FormUrlEncoded
+    @POST("update_truth/")
+    Call<UpdateTruth> updateTruth(
+            @Header("Authorization") String Authorization,
+            @Field("id") String id,
+            @Field("title") String title,
+            @Field("body") String body
+
     );
 
 }

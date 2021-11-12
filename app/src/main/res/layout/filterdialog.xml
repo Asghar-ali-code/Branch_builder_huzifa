@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Category to filter truth"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/_16sdp"
+        android:textColor="@color/btnBgColor"
+        android:id="@+id/tvselect">
+
+    </TextView>
+
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/spinnerfilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvselect"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:elevation="@dimen/_6sdp"
+        android:padding="0dp"
+        android:spinnerMode="dropdown"
+        app:smsp_floatingLabelColor="#1976D2"
+        app:smsp_floatingLabelText="Floating Label Text"
+        app:smsp_hint="Select Category"
+        app:smsp_hintColor="#1976D2"
+        app:smsp_isOutlined="true"
+        app:smsp_itemColor="@color/black"
+        app:smsp_itemListColor="@color/black"
+        app:smsp_itemListHintBackgroundColor="#808080"
+        app:smsp_itemListHintColor="#FFFFFF"
+        app:smsp_multilineError="false"
+        app:smsp_outlinedBoxColor="@color/black"
+        app:smsp_selectedItemListColor="@color/btnBgColor" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/filterbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerfilter"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@drawable/gradinetbtn"
+        android:fontFamily="@font/lato"
+        android:padding="@dimen/_12sdp"
+        android:text="Filter"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

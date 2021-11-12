@@ -48,7 +48,7 @@
                 android:fontFamily="@font/lato"
                 android:gravity="top"
                 android:padding="@dimen/_12sdp"
-                android:text="7:00"
+
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -87,7 +87,6 @@
                 android:fontFamily="@font/lato"
                 android:gravity="top"
                 android:padding="@dimen/_12sdp"
-                android:text="22:00 "
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +98,7 @@
             android:layout_margin="@dimen/_12sdp"
             android:background="@drawable/textfield_bg"
             android:elevation="@dimen/_8sdp"
-            android:hint="Delay Time in Minutes"
+            android:hint="Delay"
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@color/white"
             app:boxStrokeErrorColor="@color/crimson"
@@ -121,7 +120,6 @@
                 android:gravity="top"
                 android:numeric="integer"
                 android:padding="@dimen/_12sdp"
-                android:text="20"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>

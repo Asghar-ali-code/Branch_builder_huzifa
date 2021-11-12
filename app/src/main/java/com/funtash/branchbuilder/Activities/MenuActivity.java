@@ -62,8 +62,8 @@ public class MenuActivity extends AppCompatActivity implements TimePickerDialog.
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
         ArrayList<String> arr;
         arr = AppValues.getArrayList();
+        if (!arr.isEmpty())
         adapterObj = new menuAdapter(this, arr, i);
-
         binding.recycleView.setAdapter(adapterObj);
         binding.notiSet.setOnClickListener(view -> {
             i = AppValues.getI();
