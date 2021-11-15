@@ -60,11 +60,11 @@ public class MenuActivity extends AppCompatActivity implements TimePickerDialog.
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         setContentView(binding.getRoot());
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
-        ArrayList<String> arr;
+        ArrayList<String> arr=null;
         arr = AppValues.getArrayList();
-        if (!arr.isEmpty())
+        if (!(arr ==null)){
         adapterObj = new menuAdapter(this, arr, i);
-        binding.recycleView.setAdapter(adapterObj);
+        binding.recycleView.setAdapter(adapterObj);}
         binding.notiSet.setOnClickListener(view -> {
             i = AppValues.getI();
             if (i == 1) {
@@ -76,13 +76,7 @@ public class MenuActivity extends AppCompatActivity implements TimePickerDialog.
 
             }
         });
-        binding.backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-
-            }
-        });
+        binding.backBtn.setOnClickListener(view -> onBackPressed());
 
 
     }
